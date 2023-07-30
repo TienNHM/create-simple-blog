@@ -93,9 +93,16 @@ const updateDocusaurusConfig = (filePath, callback) => {
     const gitCheckoutCommand        = `npx degit https://github.com/TienNHM/personal-blog-template.git ${response.value}`;
     const npmInstallCommand         = `cd ${response.value} && npm install`;
     const gitInitCommand            = `cd ${response.value} && git init`;
-    const gitFixCrLfCommand            = `cd ${response.value} && git config core.autocrlf false`;
+    const gitFixCrLfCommand         = `cd ${response.value} && git config core.autocrlf false`;
     const gitCommitMasterCommand    = `cd ${response.value} && git add . && git commit -m "Initial commit" -q && git branch -M master`;
     const gitCheckoutGhPagesCommand = `cd ${response.value} && git checkout -b gh-pages && git checkout master`;
+
+    console.log(`${chalk.blue('')}`);
+    console.log(`${chalk.blue('  ___ ___ __  __ ___ _    ___   ___ _    ___   ___ ')}`);
+    console.log(`${chalk.blue(' / __|_ _|  \/  | _ \ |  | __| | _ ) |  / _ \ / __|')}`);
+    console.log(`${chalk.blue(' \__ \| || |\/| |  _/ |__| _|  | _ \ |_| (_) | (_ |')}`);
+    console.log(`${chalk.blue(' |___/___|_|  |_|_| |____|___| |___/____\___/ \___|')}`);
+    console.log(`${chalk.blue('')}`);
 
     console.log('');
     console.log(`Creating a new blog called ${chalk.blue(response.value)}...`);
@@ -179,7 +186,7 @@ const updateDocusaurusConfig = (filePath, callback) => {
         console.error('Failed to initialize git');
         process.exit(1);
     }
-    console.log('Git initialized successfully 🎉.');
+    // console.log('Git initialized successfully 🎉.');
 
     const fixCrLf = runCommand(gitFixCrLfCommand);
     if (!fixCrLf) {
@@ -190,20 +197,18 @@ const updateDocusaurusConfig = (filePath, callback) => {
     if (!commitMaster) {
         console.error('Failed to commit master');
     }
-    console.log(`Commit ${chalk.green('master')} successfully 🎉.`);
+    // console.log(`Commit ${chalk.green('master')} successfully 🎉.`);
 
     const checkoutGhPages = runCommand(gitCheckoutGhPagesCommand);
     if (!checkoutGhPages) {
         console.error('Failed to checkout gh-pages');
     }
-    console.log(`Create branch ${chalk.green('gh-pages')} successfully 🎉.`);
+    // console.log(`Create branch ${chalk.green('gh-pages')} successfully 🎉.`);
 
     console.log('');
     console.log(`Created ${chalk.blue(response.value)} at ${chalk.yellow(process.cwd() + '/' + response.value)} successfully!`);
     console.log('');
-    console.log(`${chalk.yellow("npm")} ${chalk.green(response.value)} and start coding. Please read the ${chalk.green('README.md')} file for more information.`);
-    console.log('');
-    console.log('Inside that directory, you can run several commands:');
+    console.log(`Please read the ${chalk.green('README.md')} file for more information. Inside that directory, you can run several commands:`);
     console.log('');
     console.log(`  ${chalk.yellow("npm")} run ${chalk.green('start')}`);
     console.log(`    ${chalk.italic('Starts the development server.')}`);
