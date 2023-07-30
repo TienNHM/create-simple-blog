@@ -93,9 +93,11 @@ const updateDocusaurusConfig = (filePath, callback) => {
     const gitCheckoutCommand        = `npx degit https://github.com/TienNHM/personal-blog-template.git ${response.value}`;
     const npmInstallCommand         = `cd ${response.value} && npm install`;
     const gitInitCommand            = `cd ${response.value} && git init`;
+    const gitFixCrLfCommand            = `cd ${response.value} && git config core.autocrlf false`;
     const gitCommitMasterCommand    = `cd ${response.value} && git add . && git commit -m "Initial commit" -q && git branch -M master`;
     const gitCheckoutGhPagesCommand = `cd ${response.value} && git checkout -b gh-pages && git checkout master`;
 
+    console.log('');
     console.log(`Creating a new blog called ${chalk.blue(response.value)}...`);
     console.log('');
     // console.log('Cloning the repo...');
@@ -179,36 +181,39 @@ const updateDocusaurusConfig = (filePath, callback) => {
     }
     console.log('Git initialized successfully 🎉.');
 
+    const fixCrLf = runCommand(gitFixCrLfCommand);
+    if (!fixCrLf) {
+        console.error('Failed to fix CRLF');
+    }
+
     const commitMaster = runCommand(gitCommitMasterCommand);
     if (!commitMaster) {
         console.error('Failed to commit master');
-        process.exit(1);
     }
     console.log(`Commit ${chalk.green('master')} successfully 🎉.`);
 
     const checkoutGhPages = runCommand(gitCheckoutGhPagesCommand);
     if (!checkoutGhPages) {
         console.error('Failed to checkout gh-pages');
-        process.exit(1);
     }
     console.log(`Create branch ${chalk.green('gh-pages')} successfully 🎉.`);
 
     console.log('');
-    console.log(`${chalk.green('Success!')} Created ${chalk.blue(response.value)} at ${chalk.yellow(process.cwd() + '/' + response.value)}`);
+    console.log(`Created ${chalk.blue(response.value)} at ${chalk.yellow(process.cwd() + '/' + response.value)} successfully!`);
     console.log('');
-    console.log(`cd ${chalk.green(response.value)} and start coding.`);
+    console.log(`${chalk.yellow("npm")} ${chalk.green(response.value)} and start coding. Please read the ${chalk.green('README.md')} file for more information.`);
     console.log('');
     console.log('Inside that directory, you can run several commands:');
     console.log('');
-    console.log(`  npm run ${chalk.green('start')}`);
-    console.log('    Starts the development server.');
+    console.log(`  ${chalk.yellow("npm")} run ${chalk.green('start')}`);
+    console.log(`    ${chalk.italic('Starts the development server.')}`);
     console.log('');
-    console.log(`  npm run ${chalk.green('build')}`);
-    console.log('    Bundles the app files for production.');
+    console.log(`   ${chalk.yellow("npm")} run ${chalk.green('build')}`);
+    console.log(`    ${chalk.italic('Bundles the app files for production.')}`);
     console.log('');
     console.log('______________________________________________');
     console.log('');
-    console.log(`                ${chalk.yellow("Happy Coding!")}                `);
+    console.log(`                ${chalk.blue("Happy Coding!")}                `);
     console.log('______________________________________________');
     console.log('');
 
