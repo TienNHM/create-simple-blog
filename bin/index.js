@@ -93,7 +93,7 @@ const updateDocusaurusConfig = (filePath, callback) => {
     const gitCheckoutCommand        = `npx degit https://github.com/TienNHM/personal-blog-template.git ${response.value}`;
     const npmInstallCommand         = `cd ${response.value} && npm install`;
     const gitInitCommand            = `cd ${response.value} && git init`;
-    const gitCommitMasterCommand    = `cd ${response.value} && git branch -M master`;
+    const gitCommitMasterCommand    = `cd ${response.value} && git add . && git commit -m "Initial commit" -q && git branch -M master`;
     const gitCheckoutGhPagesCommand = `cd ${response.value} && git checkout -b gh-pages && git checkout master`;
 
     console.log(`Creating a new blog called ${chalk.blue(response.value)}...`);
