@@ -1,0 +1,45 @@
+{
+  "name": "create-simple-blog",
+  "displayName": "Create simple blog",
+  "version": "1.0.7",
+  "description": "Create a personal blog quickly!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TienNHM/create-simple-blog.git"
+  },
+  "private": false,
+  "author": {
+    "email": "tiennhm.it@gmail.com",
+    "name": "Nguyen Huynh Minh Tien (TienNHM)",
+    "url": "https://github.com/TienNHM"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TienNHM/personal-blog-template/issues"
+  },
+  "homepage": "https://github.com/TienNHM/personal-blog-template#readme",
+  "keywords": [
+    "docusaurus",
+    "template",
+    "personal-blog",
+    "blog",
+    "algolia",
+    "docsearch",
+    "gitcus",
+    "github-actions",
+    "blog-template",
+    "github-actions",
+    "github-pages"
+  ],
+  "bin": {
+    "create-simple-blog": "./bin/index.js"
+  },
+  "publisher": "TienNHM",
+  "markdown": "github",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "degit": "^2.8.4",
+    "prompts": "^2.4.2"
+  }
+}
