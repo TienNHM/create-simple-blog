@@ -22,6 +22,7 @@ A npx script for scaffolding a personal blog
 - [x] Support dark mode
 - [x] Support multiple languages
 - [x] Support multiple authors, categories, tags
+- [x] Support PWA
 - [ ] Support RSS
 - [ ] Google Analytics, Google Tag Manager
 

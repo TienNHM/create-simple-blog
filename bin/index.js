@@ -97,12 +97,12 @@ const updateDocusaurusConfig = (filePath, callback) => {
     const gitCommitMasterCommand    = `cd ${response.value} && git add . && git commit -m "Initial commit" -q && git branch -M master`;
     const gitCheckoutGhPagesCommand = `cd ${response.value} && git checkout -b gh-pages && git checkout master`;
 
-    console.log(`${chalk.blue('')}`);
-    console.log(`${chalk.blue('  ___ ___ __  __ ___ _    ___   ___ _    ___   ___ ')}`);
-    console.log(`${chalk.blue(' / __|_ _|  \/  | _ \ |  | __| | _ ) |  / _ \ / __|')}`);
-    console.log(`${chalk.blue(' \__ \| || |\/| |  _/ |__| _|  | _ \ |_| (_) | (_ |')}`);
-    console.log(`${chalk.blue(' |___/___|_|  |_|_| |____|___| |___/____\___/ \___|')}`);
-    console.log(`${chalk.blue('')}`);
+    // console.log(`${chalk.blue('')}`);
+    // console.log(`${chalk.blue('  ___ ___ __  __ ___ _    ___   ___ _    ___   ___ ')}`);
+    // console.log(`${chalk.blue(' / __|_ _|  \/  | _ \ |  | __| | _ ) |  / _ \ / __|')}`);
+    // console.log(`${chalk.blue(' \__ \| || |\/| |  _/ |__| _|  | _ \ |_| (_) | (_ |')}`);
+    // console.log(`${chalk.blue(' |___/___|_|  |_|_| |____|___| |___/____\___/ \___|')}`);
+    // console.log(`${chalk.blue('')}`);
 
     console.log('');
     console.log(`Creating a new blog called ${chalk.blue(response.value)}...`);
@@ -126,6 +126,7 @@ const updateDocusaurusConfig = (filePath, callback) => {
             file.name        = `${response.value}`;
             file.description = `${response.description}`;
             file.author      = `${response.author}`;
+            file.version     = `0.0.0`;
 
             fs.writeFileSync(
                 `${response.value}/package.json`,
